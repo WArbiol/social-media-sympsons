@@ -58,7 +58,6 @@ const Add = (props) => {
           <AddIcon />
         </Fab>
       </Tooltip>
-      <Button onClick={handleOpen}>Open modal</Button>
       <StyledModal
         open={open}
         onClose={handleClose}
