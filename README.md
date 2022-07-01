@@ -4,4 +4,6 @@
 
 ## ACCESS RIGHT NOW!!!!
 
+### YOU CAN EVEN TRY THE DARK MODE!!!!!!!!!!!
+
 [https://sympsons-book.herokuapp.com/](https://sympsons-book.herokuapp.com/)
