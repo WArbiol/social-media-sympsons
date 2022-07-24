@@ -29,7 +29,7 @@ const Post = (props) => {
         component="img"
         height="20%"
         image={props.src}
-        alt="Paella dish"
+        // alt="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">

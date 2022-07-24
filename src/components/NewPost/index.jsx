@@ -11,6 +11,7 @@ import {
   Button,
   ButtonGroup,
   Fab,
+  InputAdornment,
   Modal,
   Stack,
   styled,
@@ -19,7 +20,7 @@ import {
   Typography,
 } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useState } from 'react'
 
 const StyledModal = styled(Modal)({
   display: 'flex',
@@ -39,10 +40,29 @@ const UserBox = styled(Box)({
   marginButtom: '20px',
 })
 
+const TitleField = styled(TextField)({
+  width: '100%',
+  padding: '4px',
+})
+
+const DescriptionField = styled(TextField)({
+  width: '100%',
+  padding: '4px',
+})
+
+const inputProps = {
+  step: 300,
+}
+
 const Add = (props) => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [img_url, setImg_url] = useState('')
+
   return (
     <div>
       <Tooltip
@@ -66,7 +86,7 @@ const Add = (props) => {
       >
         <Box
           width={400}
-          height={270}
+          height={320}
           bgcolor={'background.default'}
           color={'text.primary'}
           p={3}
@@ -97,33 +117,46 @@ const Add = (props) => {
               Homer
             </Typography>
           </UserBox>
-          <TextField
-            sx={{
-              width: '100%',
-              padding: '4px',
-            }}
+          <TitleField
+            id="standard-basic"
+            variant="standard"
+            placeholder="Title"
+            inputProps={{ style: { fontSize: 22 } }}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <DescriptionField
             id="standard-multiline-static"
+            variant="standard"
             multiline
             rows={3}
             placeholder="Cowabunga!"
-            variant="standard"
+            onChange={(e) => setDescription(e.target.value)}
           />
-          <Stack direction="row" gap={1} mt={2} mb={3} ml={2}>
-            <EmojiEmotions color="primary" />
-            <Image color="secondary" />
-            <VideoCameraBack color="success" />
-            <PersonAddAlt color="error" />
-          </Stack>
-          <ButtonGroup
+          <TextField
+            id="input-with-icon-textfield"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Image color="secondary" />
+                </InputAdornment>
+              ),
+            }}
+            variant="standard"
+            placeholder="Image link"
+            sx={{
+              padding: '4px',
+              my: 2,
+              width: '100%',
+            }}
+            onChange={(e) => setImg_url(e.target.value)}
+          />
+          <Button
             fullWidth
             variant="contained"
             aria-label="outlined primary button group"
           >
-            <Button>Post</Button>
-            <Button sx={{ width: '100px' }}>
-              <DateRange />
-            </Button>
-          </ButtonGroup>
+            Post
+          </Button>
         </Box>
       </StyledModal>
     </div>
